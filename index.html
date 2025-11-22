@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúc Mừng Sinh Nhật Như Quỳnh</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            color: #333;
+            text-align: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+        header {
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.9);
+        }
+        h1 {
+            color: #e91e63;
+            font-size: 2.5em;
+            margin: 0;
+        }
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* ===== SLIDESHOW 9 ẢNH ===== */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 70vh; /* Chiếm 70% chiều cao màn hình */
+            max-height: 500px; /* Giới hạn tối đa trên màn hình lớn */
+            min-height: 300px; /* Tối thiểu trên điện thoại */
+            margin-bottom: 20px;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+        .slideshow {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            object-fit: cover;
+        }
+        .slide.active {
+            opacity: 1;
+        }
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        /* Văn bản chúc mừng */
+        .hero-content {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            max-width: 90%;
+            z-index: 3;
+            text-align: center;
+        }
+
+        .hero-content h2 {
+            margin: 0;
+            font-size: 1.4em;
+            color: #e91e63;
+            font-weight: bold;
+        }
+
+        /* Responsive cho điện thoại */
+        @media (max-width: 768px) {
+            .hero {
+                height: 60vh;
+                max-height: 400px;
+            }
+            .hero-content h2 {
+                font-size: 1.1em;
+            }
+            header h1 {
+                font-size: 2em;
+            }
+            .content p {
+                font-size: 1em;
+            }
+        }
+
+        /* Trái tim bay */
+        .heart {
+            position: absolute;
+            font-size: 22px;
+            color: #ff4d4d;
+            animation: fly 3s linear;
+            pointer-events: none;
+            z-index: 2;
+        }
+        @keyframes fly {
+            0% { transform: translate(0, 0) scale(0.5); opacity: 1; }
+            100% { transform: translate(80px, -600px) scale(1.5); opacity: 0; }
+        }
+
+        /* Thông báo bật nhạc */
+        .audio-notice {
+            display: none;
+            color: #e91e63;
+            font-weight: bold;
+            margin: 20px 0;
+            cursor: pointer;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🥰CHÚC MỪNG SINH NHẬT NHƯ QUỲNH🥰</h1>
+        <!-- <p>Gửi đến người con gái anh yêu</p> -->
+    </header>
+    
+    <main>
+        <!-- SLIDESHOW 9 ẢNH -->
+        <div class="hero">
+            <div class="slideshow">
+                <div class="slide active"><img src="image/1.jfif" ></div>
+                <div class="slide"><img src="image/2.jfif" ></div>
+                <div class="slide"><img src="image/3.jfif" ></div>
+                <div class="slide"><img src="image/4.jfif" ></div>
+                <div class="slide"><img src="image/5.jpg" ></div>
+                <div class="slide"><img src="image/6.jfif" ></div>
+                <div class="slide"><img src="image/7.jpg" ></div>
+                <div class="slide"><img src="image/8.jpg" ></div>
+            </div>
+            <!-- <div class="hero-content">
+                <h2>Mạnh mẽ lên người anh yêu 🥰🥰🥰</h2>
+            </div> -->
+        </div>
+        
+       <div class="content">
+            <p>🥰"Như Quỳnh Tuổi Mới Vui Vẻ, Hạnh Phúc"🥰</p>
+            
+            <img src="image/thucmsn.jpg" >
+        </div>
+    </main>
+
+    <!-- Thông báo bật nhạc -->
+    <div class="audio-notice" id="audio-notice">
+        Nhấn vào đây để bật nhạc nền
+    </div>
+
+    <!-- Nhạc nền -->
+    <audio id="background-audio" src="image/Khúc Hát Mừng Sinh Nhật.mp3" autoplay muted loop></audio>
+
+    <script>
+        // ===== SLIDESHOW: 9 ảnh, mỗi 10 giây =====
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+
+        function showNextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        setInterval(showNextSlide, 10000); // 10 giây
+
+        // ===== TRÁI TIM BAY (giới hạn 30) =====
+        let heartCount = 0;
+        const maxHearts = 30;
+
+        function createHeart() {
+            if (heartCount < maxHearts) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '🥰';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+                document.body.appendChild(heart);
+                heartCount++;
+
+                heart.addEventListener('animationend', () => {
+                    heart.remove();
+                    heartCount--;
+                });
+            }
+        }
+        setInterval(createHeart, 500);
+
+        // ===== NHẠC NỀN TỰ ĐỘNG =====
+        window.addEventListener('load', () => {
+            const audio = document.getElementById('background-audio');
+            audio.play().then(() => {
+                audio.muted = false;
+                document.getElementById('audio-notice').style.display = 'none';
+            }).catch(() => {
+                document.getElementById('audio-notice').style.display = 'block';
+                document.getElementById('audio-notice').onclick = () => {
+                    audio.muted = false;
+                    audio.play();
+                    document.getElementById('audio-notice').style.display = 'none';
+                };
+            });
+        });
+    </script>
+</body>
+</html>
