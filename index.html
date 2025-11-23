@@ -9,7 +9,7 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            background: linear-gradient(135deg, #fffdd0 100%);
             color: #333;
             text-align: center;
             overflow-x: hidden;
@@ -20,7 +20,7 @@
             background: rgba(255, 255, 255, 0.9);
         }
         h1 {
-            color: #e91e63;
+            color: #87cedd;
             font-size: 2.5em;
             margin: 0;
         }
@@ -68,26 +68,50 @@
         }
 
         /* Văn bản chúc mừng */
-        .hero-content {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255, 255, 255, 0.95);
-            padding: 15px 25px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            max-width: 90%;
-            z-index: 3;
-            text-align: center;
-        }
+       .text-box {
+        max-width: 90%;
+        margin: 30px auto;
+        padding: 25px 20px;
+        background: rgba(255, 255, 255, 0.92);
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        backdrop-filter: blur(10px);
+        text-align: center;
+        animation: fadeInUp 1.5s ease-out;
+    }
 
-        .hero-content h2 {
-            margin: 0;
-            font-size: 1.4em;
-            color: #e91e63;
-            font-weight: bold;
+        #love-message {
+        font-size: 1.4em;
+        line-height: 1.8;
+        color: #87cedd;
+        margin: 0;
+        font-weight: 600;
+    }
+
+    /* Hiệu ứng xuất hiện mượt */
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Siêu đẹp trên điện thoại */
+    @media (max-width: 768px) {
+        .text-box {
+            margin: 20px auto;
+            padding: 20px 15px;
+            border-radius: 18px;
         }
+        #love-message {
+            font-size: 1.25em;
+            line-height: 1.7;
+        }
+    }
+
+    @media (max-width: 480px) {
+        #love-message {
+            font-size: 1.15em;
+        }
+    }
 
         /* Responsive cho điện thoại */
         @media (max-width: 768px) {
@@ -155,11 +179,15 @@
             </div> -->
         </div>
         
-       <div class="content">
-            <p>🥰"Như Quỳnh Tuổi Mới Vui Vẻ, Hạnh Phúc"🥰</p>
-            
-            <img src="image/thucmsn.jpg" >
-        </div>
+       <div class="text-box">
+        <p id="love-message">
+            Gửi bạn iu 💕~Như Quỳnh<br><br>
+Tủi mới chúc cậu lun zui zẻ nè, mạnh khoẻ nè, hạnh phúc với tình iu mà cậu lựa chọn. Đặc biệt cậu mới tìm được công việc mới, chúc cậu hoàn thành thời gian thử việc thật trọn vẹn, cố gắng nhiều nhất trong khả năng nha cậu^^<br><br>
+Tuy nhóm F7 ít khi tụ tập được đông đủ như trước, nhưng khi cậu cần tâm sự chúng tớ lun sẵn sàng lắng nghe nhaaa^^
+Hép pi bớt đây cậu nhó!<br><br>
+From: F7 cô nương 💕
+        </p>
+    </div>
     </main>
 
     <!-- Thông báo bật nhạc -->
@@ -191,7 +219,7 @@
             if (heartCount < maxHearts) {
                 const heart = document.createElement('div');
                 heart.className = 'heart';
-                heart.innerHTML = '🥰';
+                heart.innerHTML = '💕';
                 heart.style.left = Math.random() * 100 + 'vw';
                 heart.style.animationDuration = Math.random() * 2 + 3 + 's';
                 document.body.appendChild(heart);
